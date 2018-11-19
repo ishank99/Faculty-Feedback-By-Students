@@ -1,0 +1,140 @@
+
+<head>
+  <link rel="stylesheet" href="form.css">
+</head>
+<script>
+function myFunction() {
+    alert("The form was submitted");
+}
+</script>
+
+
+<div class="topnav">
+  <a href="login.html" style="float:right">Logout</a>
+</div>
+
+<form onsubmit="myFunction()" method="POST">
+<script type="text/javascript">
+function ValidateForm(frm) {
+if (frm.EvaluatorName.value == "") { alert('Evaluator name is required.'); frm.EvaluatorName.focus(); return false; }
+if (frm.StudentName.value == "") { alert('Student name is required.'); frm.StudentName.focus(); return false; }
+return true; }
+
+<script>
+function myFunction() {
+    alert("The form was submitted");
+}
+</script>
+
+<h1>Faculty Feedback Form</h1>
+<table style="width: 975px; border: 0;" cellpadding="2" cellspacing="5">
+<tr> <td colspan="4">
+</td> <td style="width:50%">
+<p>In the form below, please select your subject and fill in the feedback for the faculty of the respective subject.</p>
+<label for="sname">Student Roll No.:</label>
+<input id="sname" type="text" rows="12" cols="40" style="width: 650px;" placeholder="Enter roll no. here...">
+<label for="KnewStudentFor">Subject ID and Name:</label><br/>
+<select id="KnewStudentFor">
+<option value="">---Select Subject---</option>
+<option value="CO201 Computer Organization">CO201 Computer Organization</option>
+<option value="CO202 Theoretical Computer Science">CO202 Theoretical Computer Science</option>
+<option value="CO203 Data Structure and Algorithms">CO203 Data Structure and Algorithms</option>
+<option value="CO204 Data Base Management Systems">CO204 Data Base Management Systems</option>
+</select>
+<br>
+<br>
+<br>
+<label for="Comments">Feedback For the Respective Faculty:</label>
+<input id="Comments" type="text" rows="12" cols="40" style="width: 650px;" placeholder="Enter the feedback here...">
+
+<div style="float: right">
+<br>
+<input type='submit' class='btn btn-default btn-success btn-lg' value='Submit'/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<input type='submit' class='btn btn-default btn-success btn-lg' value='Submit'/>
+</td> </tr>
+</table>
+</form>
+<ul></ul>
+<ul></ul>
+<div></div>
+    <button>Clear All</button>
+<script>
+const form = document.querySelector('form');
+const ul = document.querySelector('ul');
+const div= document.querySelector('div');
+const button = document.querySelector('button');
+const nut = document.getElementById('sname');
+const inut = document.getElementById('Comments');
+const input = document.getElementById('KnewStudentFor');
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+localStorage.setItem('items', JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem('items'));
+
+const liMaker = (text) => {
+  const li = document.createElement('li');
+  li.textContent = text;
+  ul.appendChild(li);
+}
+
+const liMker = (text) => {
+  const div = document.createElement('div');
+  div.textContent = text;
+  div.appendChild(div);
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  itemsArray.push(nut.value);
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  liMaker(nut.value);
+  nut.value = "";
+});
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  itemsArray.push(input.value);
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  liMaker(input.value);
+  input.value = "";
+});
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  itemsArray.push(inut.value);
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  liMaker(inut.value);
+  inut.value = "";
+});
+
+data.forEach(Comments => {
+  liMaker(Comments);
+});
+
+button.addEventListener('click', function () {
+  localStorage.clear();
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+});
+</script>

@@ -1,0 +1,49 @@
+
+
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<div class="header">
+  <h1>Add Subject Information</h1></div>
+<script>
+function myFunction() {
+    alert("Subject information added.");
+}
+</script>
+
+<div class="topnav">
+  <a href="Home.html">Home</a>
+  <a href="Add student.html">Add Student Information</a>
+  <a href="Add feedback.html">Add Feedback</a>
+  <a href="Add subject.html">Add Subject Information</a>
+<a href="Generate Feedback Report.html">Generate Feedback Report</a>  <a href="login.html" style="float:right">Logout</a>
+</div>
+
+<link rel="stylesheet" href="form.css">
+<form onsubmit="myFunction()" method="POST">
+<script type="text/javascript">
+function ValidateForm(frm) {
+if (frm.Comments.value == "") { alert('Student Roll No. is required.'); frm.Comments.focus(); return false; }
+if (frm.StudentName.value == "") { alert('Student name is required.'); frm.StudentName.focus(); return false; }
+return true; }
+</script>
+<table style="width: 975px; border: 0;" cellpadding="2" cellspacing="5">
+<tr> <td colspan="4">
+</td> <td style="width:50%">
+<br>
+<p>In the form below, add the subject information.</p>
+<label for="Subject_ID">Subject ID:</label>
+<textarea name="Subject" rows="1" cols="40" style="width: 650px;" placeholder="Enter suject id here..."></textarea>
+<label for="Subject_Name">Subject Name:</label>
+<textarea name="Subject_Name" rows="1" cols="40" style="width: 650px;" placeholder="Enter suject id here..."></textarea>
+
+<div style="float: right">
+
+<br>
+<input type='submit' class='btn btn-default btn-success btn-lg' value='Submit'/>
+</td> </tr>
+</table>
+</form>
+
+
